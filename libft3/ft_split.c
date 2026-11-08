@@ -1,0 +1,87 @@
+#include "libft.h"
+#include <stdlib.h>
+
+static int  count_words(char const *s, char c)
+{
+    int i;
+    int words;
+
+    i = 0;
+    words = 0;
+    while (s[i])
+    {
+        if (s[i] != c)
+        {
+            words++;
+            while (s[i] && s[i] != c)
+                i++;
+        }
+        else
+            i++;
+    }
+    return (words);
+}
+
+static char *get_word(char const *s, int start, int end)
+{
+    char    *word;
+    int     i;
+
+    word = malloc(sizeof(char) * (end - start + 1));
+    if (!word)
+        return (NULL);
+    i = 0;
+    while (start < end)
+        word[i++] = s[start++];
+    word[i] = '\0';
+    return (word);
+}
+
+static void free_words(char **words, int count)
+{
+    int i;
+
+    i = 0;
+    while (i < count)
+    {
+        free(words[i]);
+        i++;
+    }
+    free(words);
+}
+
+char    **ft_split(char const *s, char c)
+{
+    char    **result;
+    int     i;
+    int     j;
+    int     k;
+
+    if (!s)
+        return (NULL);
+    result = malloc(sizeof(char *) * (count_words(s, c) + 1));
+    if (!result)
+        return (NULL);
+    i = 0;
+    j = 0;
+    while (s[i])
+    {
+        while (s[i] == c)
+            i++;
+        if (s[i])
+        {
+            k = i;
+            while (s[i] && s[i] != c)
+                i++;
+            result[j] = get_word(s, k, i);
+            if (!result[j])
+            {
+                free_words(result, j);
+                return (NULL);
+            }
+            j++;
+        }
+    }
+    result[j] = NULL;
+    return (result);
+}
