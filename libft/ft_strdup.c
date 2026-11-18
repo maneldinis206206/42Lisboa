@@ -6,12 +6,11 @@
 /*   By: mdinis-d <mdinis-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/09 15:40:32 by mdinis-d          #+#    #+#             */
-/*   Updated: 2026/11/09 16:15:08 by mdinis-d         ###   ########.fr       */
+/*   Updated: 2026/11/17 13:22:04 by mdinis-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
 char	*ft_strdup(const char *s)
 {

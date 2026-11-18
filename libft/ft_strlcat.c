@@ -6,7 +6,7 @@
 /*   By: mdinis-d <mdinis-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/09 15:40:46 by mdinis-d          #+#    #+#             */
-/*   Updated: 2026/11/09 17:00:29 by mdinis-d         ###   ########.fr       */
+/*   Updated: 2026/11/18 16:19:53 by mdinis-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 	i = 0;
 	while ((dst[i] != '\0') && i < size)
 		i++;
-	while ((src[j] != '\0') && (j + i + 1 < size))
+	while ((src[j] != '\0') && (i < size - 1))
 	{
 		dst[i] = src[j];
 		i++;

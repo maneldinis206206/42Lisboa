@@ -6,12 +6,11 @@
 /*   By: mdinis-d <mdinis-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/09 15:39:26 by mdinis-d          #+#    #+#             */
-/*   Updated: 2026/11/09 15:57:44 by mdinis-d         ###   ########.fr       */
+/*   Updated: 2026/11/18 16:10:28 by mdinis-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
 static int	count_digits(int n)
 {

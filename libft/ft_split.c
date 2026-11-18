@@ -6,12 +6,11 @@
 /*   By: mdinis-d <mdinis-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/09 15:40:20 by mdinis-d          #+#    #+#             */
-/*   Updated: 2026/11/09 16:38:26 by mdinis-d         ###   ########.fr       */
+/*   Updated: 2026/11/17 13:21:53 by mdinis-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
 static int	count_words(char const *s, char c)
 {
