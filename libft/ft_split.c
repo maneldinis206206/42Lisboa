@@ -61,6 +61,20 @@ static void	free_words(char **words, int count)
 	free(words);
 }
 
+static int	skip_separator(char const *s, int i, char c)
+{
+	while (s[i] == c)
+		i++;
+	return (i);
+}
+
+static int	get_word_end(char const *s, int i, char c)
+{
+	while (s[i] && s[i] != c)
+		i++;
+	return (i);
+}
+
 char	**ft_split(char const *s, char c)
 {
 	char	**result;
@@ -77,13 +91,11 @@ char	**ft_split(char const *s, char c)
 	j = 0;
 	while (s[i])
 	{
-		while (s[i] == c)
-			i++;
+		i = skip_separator(s, i, c);
 		if (s[i])
 		{
 			k = i;
-			while (s[i] && s[i] != c)
-				i++;
+			i = get_word_end(s, i, c);
 			result[j] = get_word(s, k, i);
 			if (!result[j])
 			{
