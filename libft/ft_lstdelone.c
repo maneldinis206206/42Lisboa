@@ -6,7 +6,7 @@
 /*   By: mdinis-d <mdinis-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/17 11:29:43 by mdinis-d          #+#    #+#             */
-/*   Updated: 2026/11/17 11:33:46 by mdinis-d         ###   ########.fr       */
+/*   Updated: 2026/11/21 11:01:29 by mdinis-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
 	if (!lst)
 		return ;
-	del(lst->content);
+	if (del)
+		del(lst->content);
 	free(lst);
 }

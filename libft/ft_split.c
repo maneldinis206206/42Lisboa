@@ -6,7 +6,7 @@
 /*   By: mdinis-d <mdinis-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/09 15:40:20 by mdinis-d          #+#    #+#             */
-/*   Updated: 2026/11/17 13:21:53 by mdinis-d         ###   ########.fr       */
+/*   Updated: 2026/11/21 13:59:11 by mdinis-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,18 +33,22 @@ static int	count_words(char const *s, char c)
 	return (words);
 }
 
-static char	*get_word(char const *s, int start, int end)
+static char	*get_word(char const *s, int *i, char c)
 {
 	char	*word;
-	int		i;
+	int		start;
+	int		j;
 
-	word = malloc(sizeof(char) * (end - start + 1));
+	start = *i;
+	while (s[*i] && s[*i] != c)
+		(*i)++;
+	word = malloc(sizeof(char) * (*i - start + 1));
 	if (!word)
 		return (NULL);
-	i = 0;
-	while (start < end)
-		word[i++] = s[start++];
-	word[i] = '\0';
+	j = 0;
+	while (start < *i)
+		word[j++] = s[start++];
+	word[j] = '\0';
 	return (word);
 }
 
@@ -61,50 +65,39 @@ static void	free_words(char **words, int count)
 	free(words);
 }
 
-static int	skip_separator(char const *s, int i, char c)
+static int	fill_words(char **result, char const *s, char c)
 {
-	while (s[i] == c)
-		i++;
-	return (i);
-}
+	int	i;
+	int	j;
 
-static int	get_word_end(char const *s, int i, char c)
-{
-	while (s[i] && s[i] != c)
-		i++;
-	return (i);
+	i = 0;
+	j = 0;
+	while (s[i])
+	{
+		while (s[i] == c)
+			i++;
+		if (s[i])
+		{
+			result[j] = get_word(s, &i, c);
+			if (!result[j])
+				return (free_words(result, j), 0);
+			j++;
+		}
+	}
+	result[j] = NULL;
+	return (1);
 }
 
 char	**ft_split(char const *s, char c)
 {
 	char	**result;
-	int		i;
-	int		j;
-	int		k;
 
 	if (!s)
 		return (NULL);
 	result = malloc(sizeof(char *) * (count_words(s, c) + 1));
 	if (!result)
 		return (NULL);
-	i = 0;
-	j = 0;
-	while (s[i])
-	{
-		i = skip_separator(s, i, c);
-		if (s[i])
-		{
-			k = i;
-			i = get_word_end(s, i, c);
-			result[j] = get_word(s, k, i);
-			if (!result[j])
-			{
-				free_words(result, j);
-				return (NULL);
-			}
-			j++;
-		}
-	}
-	result[j] = NULL;
+	if (!fill_words(result, s, c))
+		return (NULL);
 	return (result);
 }

@@ -6,7 +6,7 @@
 /*   By: mdinis-d <mdinis-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/09 15:39:56 by mdinis-d          #+#    #+#             */
-/*   Updated: 2026/11/09 17:00:07 by mdinis-d         ###   ########.fr       */
+/*   Updated: 2026/11/21 17:12:20 by mdinis-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	*ft_memset(void *s, int c, size_t n)
 	i = 0;
 	while (i < n)
 	{
-		p[i] = (unsigned char)c;
+		p[i] = c;
 		i++;
 	}
 	return (s);

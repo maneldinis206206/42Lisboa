@@ -6,7 +6,7 @@
 /*   By: mdinis-d <mdinis-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/18 16:05:03 by mdinis-d          #+#    #+#             */
-/*   Updated: 2026/11/18 17:35:53 by mdinis-d         ###   ########.fr       */
+/*   Updated: 2026/11/21 13:09:06 by mdinis-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
-}	t_list;
+}					t_list;
 
 int				ft_isalpha(int c);
 size_t			ft_strlen(const char *s);
