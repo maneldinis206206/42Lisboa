@@ -1,27 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdinis-d <mdinis-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/11/09 15:38:26 by mdinis-d          #+#    #+#             */
-/*   Updated: 2026/11/21 17:15:48 by mdinis-d         ###   ########.fr       */
+/*   Created: 2026/11/18 17:16:02 by mdinis-d          #+#    #+#             */
+/*   Updated: 2026/11/21 16:45:20 by mdinis-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_bzero(void *s, size_t n)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	size_t			i;
-	unsigned char	*p;
+	t_list	*new_list;
+	t_list	*new_node;
+	void	*content;
 
-	p = (unsigned char *)s;
-	i = 0;
-	while (i < n)
+	new_list = NULL;
+	if (!f || !del)
+		return (NULL);
+	while (lst)
 	{
-		p[i] = 0;
-		i++;
+		content = f(lst->content);
+		new_node = ft_lstnew(content);
+		if (!new_node)
+		{
+			del(content);
+			ft_lstclear(&new_list, del);
+			return (NULL);
+		}
+		ft_lstadd_back(&new_list, new_node);
+		lst = lst->next;
 	}
+	return (new_list);
 }
