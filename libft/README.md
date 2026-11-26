@@ -87,7 +87,7 @@ The bonus part implements functions for working with singly linked lists.
 
 The library can be compiled using the provided Makefile.
 
-To compile the mandatory part, run:
+To compile, run:
 
 ```bash
 make
