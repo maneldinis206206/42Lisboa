@@ -6,7 +6,7 @@
 /*   By: mdinis-d <mdinis-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/09 15:39:49 by mdinis-d          #+#    #+#             */
-/*   Updated: 2026/11/21 17:20:03 by mdinis-d         ###   ########.fr       */
+/*   Updated: 2026/11/27 12:56:35 by mdinis-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 	const unsigned char	*source;
 	unsigned char		*destiny;
 
+	if (!dst && !src)
+		return (dst);
 	source = (const unsigned char *)src;
 	destiny = (unsigned char *)dst;
 	i = 0;
@@ -28,4 +30,3 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 	}
 	return (dst);
 }
-

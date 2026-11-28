@@ -6,7 +6,7 @@
 /*   By: mdinis-d <mdinis-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/09 15:39:53 by mdinis-d          #+#    #+#             */
-/*   Updated: 2026/11/21 18:18:51 by mdinis-d         ###   ########.fr       */
+/*   Updated: 2026/11/27 12:57:03 by mdinis-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,13 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 {
 	unsigned char		*destiny;
 	const unsigned char	*source;
-	size_t				i;
 
+	if (!dest && !src)
+		return (dest);
+	if (dest == src || n == 0)
+		return (dest);
 	destiny = (unsigned char *)dest;
 	source = (const unsigned char *)src;
-	i = 0;
 	if (destiny > source)
 	{
 		while (n > 0)
@@ -30,12 +32,6 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 		}
 	}
 	else
-	{
-		while (i < n)
-		{
-			destiny[i] = source[i];
-			i++;
-		}
-	}
+		ft_memcpy(dest, src, n);
 	return (dest);
 }
